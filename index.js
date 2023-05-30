@@ -1,4 +1,15 @@
 // index.js
+
+/**
+ * Pay attention to the following variables
+ * {{your-frontend-application-url}} : The URL to access your view application
+ * {{your-mid}} : Your Merchant ID
+ * {{your-password}} : Your Payments Hub Password in the Integration Keys
+ * {{your-developerKey}} : Your Developers keys
+ * {{your-x-nabwss-appsource}} :  Your x-nabwss-appsource key
+ * {{your_gateway_public_key}} :  Your gateway public key
+ */
+
 const express = require('express')
 var axios = require('axios');
 const cors = require('cors');
@@ -36,11 +47,8 @@ app.post('/send', (req, res) => {
     data : data
     };
 
-    // res.send(config);
     axios(config)
     .then(function (response) {
-
-        // res.send(req.body);
 
         var data = JSON.stringify({
             "token": req.body.token,
@@ -61,7 +69,6 @@ app.post('/send', (req, res) => {
         data : data
         };
 
-        // res.send(config);
         axios(config)
         .then(function (response) {
             res.send({status: "payment successful"});
